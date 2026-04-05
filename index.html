@@ -192,15 +192,36 @@
       font-size: 0.95rem;
     }
 
+    .experience-box {
+      display: grid;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .experience-photo {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .experience-photo img {
+      width: 100%;
+      display: block;
+      max-height: 320px;
+      object-fit: cover;
+      background: #e9eef5;
+    }
+
+    .experience-content {
+      text-align: center;
+    }
+
     .footer-note {
       text-align: center;
       color: var(--muted);
       font-size: 0.92rem;
       margin-top: 18px;
-    }
-
-    .center-box {
-      text-align: center;
     }
 
     @media (min-width: 700px) {
@@ -224,6 +245,10 @@
       .place-grid {
         grid-template-columns: 1fr 1fr;
       }
+
+      .experience-box {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   </style>
 </head>
@@ -243,9 +268,10 @@
         allowfullscreen>
       </iframe>
       <div class="map-link">
-        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1hsO4otPeCwlggWmRsfHg1LEGQiQkONU&usp=sharing"
-           target="_blank"
-           rel="noopener noreferrer">
+        <a
+          href="https://www.google.com/maps/d/u/0/viewer?mid=1hsO4otPeCwlggWmRsfHg1LEGQiQkONU&usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer">
           Opne kart i fullskjerm
         </a>
       </div>
@@ -268,10 +294,11 @@
             <div class="place-content">
               <h3>Ibis Edinburgh Centre South Bridge</h3>
               <p>Dette hotellet skal vi bu på.</p>
-              <a class="hotel-link"
-                 href="https://all.accor.com/hotel/8484/index.en.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps"
-                 target="_blank"
-                 rel="noopener noreferrer">
+              <a
+                class="hotel-link"
+                href="https://all.accor.com/hotel/8484/index.en.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps"
+                target="_blank"
+                rel="noopener noreferrer">
                 Opne nettsida til hotellet
               </a>
             </div>
@@ -281,7 +308,7 @@
 
       <div id="plassar" class="tab-panel">
         <h2>Plassar som er verdt å sjå</h2>
-        <p class="intro">Her ligg alle bileta samla i same kortstruktur som før.</p>
+        <p class="intro">Her ligg dei ulike plassane samla. Vi kan flytte bilete mellom fanene seinare.</p>
         <div class="place-grid">
           <div class="place-card">
             <img src="bilder/waverley-bridge.jpg" alt="Waverley Bridge">
@@ -396,7 +423,7 @@
           </div>
 
           <div class="place-card">
-            <img src="bilder/st-giles-cathedral.jpg" alt="St Giles Cathedral">
+            <img src="bilder/st-giles-cathedral.jpg" alt="St Giles' Cathedral">
             <div class="place-content">
               <h3>St Giles' Cathedral</h3>
               <p></p>
@@ -420,7 +447,7 @@
           </div>
 
           <div class="place-card">
-            <img src="bilder/old-college-university-of-edinburgh.jpg" alt="Old College University of Edinburgh">
+            <img src="bilder/old-college-university-of-edinburgh.jpg" alt="Old College, University of Edinburgh">
             <div class="place-content">
               <h3>Old College, University of Edinburgh</h3>
               <p></p>
@@ -428,7 +455,7 @@
           </div>
 
           <div class="place-card">
-            <img src="bilder/new-college-university-of-edinburgh.jpg" alt="New College University of Edinburgh">
+            <img src="bilder/new-college-university-of-edinburgh.jpg" alt="New College, University of Edinburgh">
             <div class="place-content">
               <h3>New College, University of Edinburgh</h3>
               <p></p>
@@ -524,7 +551,7 @@
           </div>
 
           <div class="place-card">
-            <img src="bilder/the-writers-museum.jpg" alt="The Writers Museum">
+            <img src="bilder/the-writers-museum.jpg" alt="The Writers' Museum">
             <div class="place-content">
               <h3>The Writers' Museum</h3>
               <p></p>
@@ -564,7 +591,7 @@
           </div>
 
           <div class="place-card">
-            <img src="bilder/advocates-close.jpg" alt="Advocates Close">
+            <img src="bilder/advocates-close.jpg" alt="Advocate's Close">
             <div class="place-content">
               <h3>Advocate's Close</h3>
               <p></p>
@@ -572,7 +599,7 @@
           </div>
 
           <div class="place-card">
-            <img src="bilder/lady-stairs-close.jpg" alt="Lady Stairs Close">
+            <img src="bilder/lady-stairs-close.jpg" alt="Lady Stair's Close">
             <div class="place-content">
               <h3>Lady Stair's Close</h3>
               <p></p>
@@ -596,7 +623,7 @@
           </div>
 
           <div class="place-card">
-            <img src="bilder/dunbars-close.jpg" alt="Dunbars Close">
+            <img src="bilder/dunbars-close.jpg" alt="Dunbar's Close">
             <div class="place-content">
               <h3>Dunbar's Close</h3>
               <p></p>
@@ -604,7 +631,7 @@
           </div>
 
           <div class="place-card">
-            <img src="bilder/st-bernards-well.jpg" alt="St Bernards Well">
+            <img src="bilder/st-bernards-well.jpg" alt="St Bernard's Well">
             <div class="place-content">
               <h3>St Bernard's Well</h3>
               <p></p>
@@ -618,7 +645,6 @@
               <p>Rolig og veldig fotogenisk område.</p>
             </div>
           </div>
-        </div>
 
           <div class="place-card">
             <img src="bilder/Arthurs-Seat.jpg" alt="Arthurs Seat">
@@ -659,25 +685,29 @@
           </div>
         </div>
       </div>
-      
+
       <div id="opplevingar" class="tab-panel">
         <h2>Opplevingar</h2>
-        <p class="intro">Forslag til opplevingar og aktivitetar.</p>
-      
+        <p class="intro">Forslag til eigne opplevingar og aktivitetar.</p>
+
         <div class="experience-box">
-          <img src="bilder/whisky.jpg" alt="Whisky Experience">
-      
+          <div class="experience-photo">
+            <img src="bilder/whisky.jpg" alt="Scotch Whisky Experience">
+          </div>
+
           <div class="experience-content">
-            <a class="experience-link"
-               href="https://www.scotchwhiskyexperience.co.uk/"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a
+              class="experience-link"
+              href="https://www.scotchwhiskyexperience.co.uk/"
+              target="_blank"
+              rel="noopener noreferrer">
               Scotch Whisky Experience
             </a>
           </div>
         </div>
       </div>
-      
+    </section>
+
     <p class="footer-note">Laga for mobil og GitHub Pages.</p>
   </div>
 
