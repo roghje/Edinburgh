@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edinburgh 30.april - 4.mai</title>
+  <style>
+    :root {
+      --bg: #f3f6fb;
+      --card: #ffffff;
+      --text: #1e2a3a;
+      --muted: #5c6675;
+      --primary: #174a84;
+      --primary-dark: #10345d;
+      --line: #dbe4f0;
+      --shadow: 0 8px 24px rgba(19, 46, 87, 0.10);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 14px 14px 40px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #174a84, #2d6db3);
+      color: white;
+      border-radius: 24px;
+      padding: 22px 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 1.9rem;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      margin: 8px 0 0;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .map-section,
+    .tab-panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .map-section {
+      padding: 14px;
+      margin-bottom: 18px;
+    }
+
+    .map-section h2,
+    .tab-panel h2 {
+      margin: 0 0 12px;
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 42vh;
+      min-height: 280px;
+      border: 0;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .map-link {
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .map-link a,
+    .hotel-link,
+    .experience-link {
+      display: inline-block;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+    }
+
+    .hotel-link,
+    .experience-link {
+      margin-top: 12px;
+    }
+
+    .tabs {
+      margin-top: 8px;
+    }
+
+    .tab-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tab-button {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--primary);
+      padding: 12px 10px;
+      border-radius: 14px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      min-height: 52px;
+    }
+
+    .tab-button.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .tab-panel {
+      display: none;
+      padding: 14px;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .intro {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .place-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .place-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .place-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 320px;
+      object-fit: cover;
+      background: #e9eef5;
+    }
+
+    .place-content {
+      padding: 12px 13px 14px;
+    }
+
+    .place-content h3 {
+      margin: 0 0 6px;
+      font-size: 1.08rem;
+      line-height: 1.25;
+    }
+
+    .place-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 18px;
+    }
+
+    .center-box {
+      text-align: center;
+    }
+
+    @media (min-width: 700px) {
+      .page {
+        padding: 22px 18px 50px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .map-frame {
+        height: 55vh;
+        min-height: 380px;
+      }
+
+      .tab-buttons {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .place-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <h1>Edinburgh 30.april - 4.mai</h1>
+      <p>Forslag til plassar å besøkje, mat og drikke, og opplevingar i Edinburgh.</p>
+    </header>
+
+    <section class="map-section">
+      <h2>Kart</h2>
+      <iframe
+        class="map-frame"
+        src="https://www.google.com/maps/d/embed?mid=1hsO4otPeCwlggWmRsfHg1LEGQiQkONU"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+      <div class="map-link">
+        <a href="https://www.google.com/maps/d/u/0/viewer?mid=1hsO4otPeCwlggWmRsfHg1LEGQiQkONU&usp=sharing"
+           target="_blank"
+           rel="noopener noreferrer">
+          Opne kart i fullskjerm
+        </a>
+      </div>
+    </section>
+
+    <section class="tabs">
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="hotellet">Hotellet</button>
+        <button class="tab-button" data-tab="plassar">Verdt å sjå</button>
+        <button class="tab-button" data-tab="mat">Mat og drikke</button>
+        <button class="tab-button" data-tab="opplevingar">Opplevingar</button>
+      </div>
+
+      <div id="hotellet" class="tab-panel active">
+        <h2>Hotellet</h2>
+        <p class="intro">Her ligg hotellet vi skal bu på.</p>
+        <div class="place-grid">
+          <div class="place-card">
+            <img src="bilder/ibis-edinburgh-centre-south-bridge.jpg" alt="Ibis Edinburgh Centre South Bridge">
+            <div class="place-content">
+              <h3>Ibis Edinburgh Centre South Bridge</h3>
+              <p>Dette hotellet skal vi bu på.</p>
+              <a class="hotel-link"
+                 href="https://all.accor.com/hotel/8484/index.en.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                Opne nettsida til hotellet
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="plassar" class="tab-panel">
+        <h2>Plassar som er verdt å sjå</h2>
+        <p class="intro">Her ligg alle bileta samla i same kortstruktur som før.</p>
+        <div class="place-grid">
+          <div class="place-card">
+            <img src="bilder/waverley-bridge.jpg" alt="Waverley Bridge">
+            <div class="place-content">
+              <h3>Waverley Bridge</h3>
+              <p>Nært sentrum og fint som startpunkt.</p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/edinburgh-castle.jpg" alt="Edinburgh Castle">
+            <div class="place-content">
+              <h3>Edinburgh Castle</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/royal-mile.jpg" alt="Royal Mile">
+            <div class="place-content">
+              <h3>Royal Mile</h3>
+              <p>Hovudgata i Edinburgh.</p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/ross-fountain.jpg" alt="Ross Fountain">
+            <div class="place-content">
+              <h3>Ross Fountain</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/scott-monument.jpg" alt="Scott Monument">
+            <div class="place-content">
+              <h3>Scott Monument</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/holyrood-palace.jpg" alt="Holyrood Palace">
+            <div class="place-content">
+              <h3>Holyrood Palace</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/greyfriars-bobby-statue.jpg" alt="Greyfriars Bobby Statue">
+            <div class="place-content">
+              <h3>Greyfriars Bobby Statue</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/dean-village-riverside.jpg" alt="Dean Village Riverside">
+            <div class="place-content">
+              <h3>Dean Village – Riverside</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/the-vennel-viewpoint.jpg" alt="The Vennel Viewpoint">
+            <div class="place-content">
+              <h3>The Vennel Viewpoint</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/circus-lane.jpg" alt="Circus Lane">
+            <div class="place-content">
+              <h3>Circus Lane</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/cockburn-street.jpg" alt="Cockburn Street">
+            <div class="place-content">
+              <h3>Cockburn Street</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/princes-street-gardens.jpg" alt="Princes Street Gardens">
+            <div class="place-content">
+              <h3>Princes Street Gardens</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/calton-hill.jpg" alt="Calton Hill">
+            <div class="place-content">
+              <h3>Calton Hill</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/victoria-street.jpg" alt="Victoria Street">
+            <div class="place-content">
+              <h3>Victoria Street</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/st-giles-cathedral.jpg" alt="St Giles Cathedral">
+            <div class="place-content">
+              <h3>St Giles' Cathedral</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/greyfriars-kirkyard.jpg" alt="Greyfriars Kirkyard">
+            <div class="place-content">
+              <h3>Greyfriars Kirkyard</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/national-museum-of-scotland.jpg" alt="National Museum of Scotland">
+            <div class="place-content">
+              <h3>National Museum of Scotland</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/old-college-university-of-edinburgh.jpg" alt="Old College University of Edinburgh">
+            <div class="place-content">
+              <h3>Old College, University of Edinburgh</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/new-college-university-of-edinburgh.jpg" alt="New College University of Edinburgh">
+            <div class="place-content">
+              <h3>New College, University of Edinburgh</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/national-gallery-of-scotland.jpg" alt="National Gallery of Scotland">
+            <div class="place-content">
+              <h3>National Gallery of Scotland</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/national-gallery-of-scotland-inne.jpg" alt="National Gallery of Scotland inne">
+            <div class="place-content">
+              <h3>National Gallery of Scotland</h3>
+              <p>Interiør.</p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/grassmarket.jpg" alt="Grassmarket">
+            <div class="place-content">
+              <h3>Grassmarket</h3>
+              <p>Fint område for byliv og stemning.</p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/carlowrie-castle.jpg" alt="Carlowrie Castle">
+            <div class="place-content">
+              <h3>Carlowrie Castle</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/thistle-chapel.jpg" alt="Thistle Chapel">
+            <div class="place-content">
+              <h3>Thistle Chapel</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/jupiter-artland.jpg" alt="Jupiter Artland">
+            <div class="place-content">
+              <h3>Jupiter Artland</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/scottish-national-portrait-gallery.jpg" alt="Scottish National Portrait Gallery">
+            <div class="place-content">
+              <h3>Scottish National Portrait Gallery</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/craigmillar-castle.jpg" alt="Craigmillar Castle">
+            <div class="place-content">
+              <h3>Craigmillar Castle</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/the-shore.jpg" alt="The Shore">
+            <div class="place-content">
+              <h3>The Shore</h3>
+              <p>Leith med fin stemning.</p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/newhaven-lighthouse.jpg" alt="Newhaven Lighthouse">
+            <div class="place-content">
+              <h3>Newhaven Lighthouse</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/portobello.jpg" alt="Portobello">
+            <div class="place-content">
+              <h3>Portobello</h3>
+              <p>Strand og rolegare tempo.</p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/the-writers-museum.jpg" alt="The Writers Museum">
+            <div class="place-content">
+              <h3>The Writers' Museum</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/gardeners-cottage.jpg" alt="Gardner's Cottage">
+            <div class="place-content">
+              <h3>Gardner's Cottage</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/lawnmarket.jpg" alt="Lawnmarket">
+            <div class="place-content">
+              <h3>Lawnmarket</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/old-tolbooth.jpg" alt="Old Tolbooth">
+            <div class="place-content">
+              <h3>Old Tolbooth</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/stockbridge.jpg" alt="Stockbridge">
+            <div class="place-content">
+              <h3>Stockbridge</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/advocates-close.jpg" alt="Advocates Close">
+            <div class="place-content">
+              <h3>Advocate's Close</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/lady-stairs-close.jpg" alt="Lady Stairs Close">
+            <div class="place-content">
+              <h3>Lady Stair's Close</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/riddles-court.jpg" alt="Riddles Court">
+            <div class="place-content">
+              <h3>Riddles Court</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/paisley-close.jpg" alt="Paisley Close">
+            <div class="place-content">
+              <h3>Paisley Close</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/dunbars-close.jpg" alt="Dunbars Close">
+            <div class="place-content">
+              <h3>Dunbar's Close</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/st-bernards-well.jpg" alt="St Bernards Well">
+            <div class="place-content">
+              <h3>St Bernard's Well</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/dean-village-edinburgh.jpg" alt="Dean Village Edinburgh">
+            <div class="place-content">
+              <h3>Dean Village</h3>
+              <p>Rolig og veldig fotogenisk område.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="mat" class="tab-panel">
+        <h2>Mat og drikke</h2>
+        <p class="intro">Kaféar, kakao og andre stopp undervegs.</p>
+        <div class="place-grid">
+          <div class="place-card">
+            <img src="bilder/uplands-roast.jpg" alt="Uplands Roast">
+            <div class="place-content">
+              <h3>Uplands Roast</h3>
+              <p>Kjent for god kakao.</p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/the-willow-tea-rooms.jpg" alt="The Willow Tea Rooms">
+            <div class="place-content">
+              <h3>The Willow Tea Rooms</h3>
+              <p></p>
+            </div>
+          </div>
+
+          <div class="place-card">
+            <img src="bilder/the-milkman.jpg" alt="The Milkman">
+            <div class="place-content">
+              <h3>The Milkman</h3>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+          <div class="place-card">
+            <img src="bilder/Arthurs-Seat.jpg" alt="Arthurs Seat">
+            <div class="place-content">
+              <h3>Arthur's Seat</h3>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="opplevingar" class="tab-panel">
+        <h2>Opplevingar</h2>
+        <p class="intro">Forslag til opplevingar og aktivitetar.</p>
+      
+        <div class="experience-box">
+          <img src="bilder/whisky.jpg" alt="Whisky Experience">
+      
+          <div class="experience-content">
+            <a class="experience-link"
+               href="https://www.scotchwhiskyexperience.co.uk/"
+               target="_blank"
+               rel="noopener noreferrer">
+              Scotch Whisky Experience
+            </a>
+          </div>
+        </div>
+      </div>
+      
+    <p class="footer-note">Laga for mobil og GitHub Pages.</p>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll(".tab-button");
+    const panels = document.querySelectorAll(".tab-panel");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        panels.forEach((panel) => panel.classList.remove("active"));
+
+        button.classList.add("active");
+        document.getElementById(target).classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
